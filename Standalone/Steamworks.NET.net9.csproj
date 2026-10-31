@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>Steamworks.NET</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x86;x64;AnyCPU</Platforms>
+    <PlatformTarget Condition="'$(Platform)' == 'x86'">x86</PlatformTarget>
+    <PlatformTarget Condition="'$(Platform)' == 'x64'">x64</PlatformTarget>
+    <DefineConstants>$(DefineConstants);STEAMWORKS_WIN</DefineConstants>
+    <DefineConstants Condition="'$(Platform)' == 'x86'">$(DefineConstants);STEAMWORKS_X86</DefineConstants>
+    <DefineConstants Condition="'$(Platform)' != 'x86'">$(DefineConstants);STEAMWORKS_X64</DefineConstants>
+    <OutputPath>bin\net9\$(Platform)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>obj\net9\$(Platform)\$(Configuration)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\com.rlabrecque.steamworks.net\Runtime\**\*.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+</Project>
